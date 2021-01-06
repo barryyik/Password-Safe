@@ -199,20 +199,21 @@ function createTable(obj) {
             $("#messageDisplay").append('<div class="alert alert-danger" role="alert">Invalid input to insert.</div>');
         }
         else{
-            console.log(jsonStringMake( ($('#jsonTable tbody tr').length) ));
             var arrData = JSON.parse(jsonStringMake($('#jsonTable tbody tr').length));
             var arrInput = [$('#insertInput0').val(),$('#insertInput1').val(),$('#insertInput2').val(),$('#insertInput3').val()];
             arrData.push(arrInput);
-            arrData.sort(function(a, b) {
-                return a[0] - b[0];
-            });
-            createTable(arrData);
+            createTable(arrData.sort(function(a, b) {
+                if (a[0] > b[0]) {
+                    return 1;
+                }
+                if (b[0] > a[0]) {
+                    return -1;
+                }
+                return 0;
+            }));
             $("#messageDisplay").append('<div class="alert alert-primary" role="alert">Data Inserted.</div>');
         }
-        
     });
-
-
 }
 
 // #################### Encryption & Decryption ####################
