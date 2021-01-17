@@ -149,13 +149,17 @@ function createTable(obj) {
             $("#messageDisplay").append('<div class="alert alert-danger" role="alert">Invalid encrypt/decryption password.</div>');
         }
         else{
-            var encryptPassword = $('#encryptInput').val();
-            for(i = 0; i < $('#jsonTable tbody tr').length*5; i++) {
-                if (i%5 == 4) { continue; }
-                var tempDataVal = encryptData($('#tableInput'+(i)).val(), encryptPassword);
-                $('#tableInput'+(i)).val(tempDataVal);
-            }
-            $("#messageDisplay").append('<div class="alert alert-primary" role="alert">Encryption Completed.</div>');
+            $("#messageDisplay").append('<div id="waitingMsg" class="alert alert-warning" role="alert">Encryption takes time, please wait......</div>');
+            $('#waitingMsg').ready(()=>{
+                var encryptPassword = $('#encryptInput').val();
+                for(i = 0; i < $('#jsonTable tbody tr').length*5; i++) {
+                    if (i%5 == 4) { continue; }
+                    var tempDataVal = encryptData($('#tableInput'+(i)).val(), encryptPassword);
+                    $('#tableInput'+(i)).val(tempDataVal);
+                }
+                $("#messageDisplay").empty();
+                $("#messageDisplay").append('<div class="alert alert-primary" role="alert">Encryption Completed.</div>');
+            });
         }
     });
 
@@ -169,13 +173,17 @@ function createTable(obj) {
             $("#messageDisplay").append('<div class="alert alert-danger" role="alert">Invalid encrypt/decryption password.</div>');
         }
         else{
-            var encryptPassword = $('#encryptInput').val();
-            for(i = 0; i < $('#jsonTable tbody tr').length*5; i++) {
-                if (i%5 == 4) { continue; }
-                var tempDataVal = decryptData($('#tableInput'+(i)).val(), encryptPassword);
-                $('#tableInput'+(i)).val(tempDataVal);
-            }
-            $("#messageDisplay").append('<div class="alert alert-primary" role="alert">Decryption Completed.</div>');
+            $("#messageDisplay").append('<div id="waitingMsg" class="alert alert-warning" role="alert">Decryption takes time, please wait......</div>');
+            $('#waitingMsg').ready(()=>{
+                var encryptPassword = $('#encryptInput').val();
+                for(i = 0; i < $('#jsonTable tbody tr').length*5; i++) {
+                    if (i%5 == 4) { continue; }
+                    var tempDataVal = decryptData($('#tableInput'+(i)).val(), encryptPassword);
+                    $('#tableInput'+(i)).val(tempDataVal);
+                }
+                $("#messageDisplay").empty();
+                $("#messageDisplay").append('<div class="alert alert-primary" role="alert">Decryption Completed.</div>');
+            });
         }
         
     });
