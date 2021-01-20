@@ -211,10 +211,10 @@ function createTable(obj) {
             var arrInput = [$('#insertInput0').val(),$('#insertInput1').val(),$('#insertInput2').val(),$('#insertInput3').val()];
             arrData.push(arrInput);
             createTable(arrData.sort(function(a, b) {
-                if (a[0] > b[0]) {
+                if (a[0].toLowerCase() > b[0].toLowerCase()) {
                     return 1;
                 }
-                if (b[0] > a[0]) {
+                if (b[0].toLowerCase() > a[0].toLowerCase()) {
                     return -1;
                 }
                 return 0;
