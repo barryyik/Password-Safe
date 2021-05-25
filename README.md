@@ -6,4 +6,4 @@ This is a simple but secure password safe which encrypts and stores your passwor
 AES. It uses the CryptoJS library with PBKDF2 key derivation function implemented.
 
 ## Link to the page
-You can access it [here](https://barryyik.github.io/password-safe/).
+You can access it [here](https://barryyik.github.io/Password-Safe/).
